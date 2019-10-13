@@ -1,14 +1,19 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Tutorial
+from .models import Content
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
+from .forms import ReportForm
+from django.template.loader import get_template
+from django.core.mail import EmailMessage
+
+
 
 def homepage(request):
     return render(request = request,
                   template_name='main/home.html',
-                  context = {"tutorials":Tutorial.objects.all})
+                  context = {"content":Content.objects.all})
 
 def register(request):
 	if request.method == "POST":
@@ -56,3 +61,45 @@ def login_request(request):
     return render(request = request,
                     template_name = "main/login.html",
                     context={"form":form})
+
+def report(request):
+
+    form_class = ReportForm
+
+    if request.method == 'POST':
+        form = form_class(data=request.POST)
+
+        if form.is_valid():
+            contact_name = request.POST.get(
+                'your_name'
+            , '')
+            contact_email = request.POST.get(
+                'your_email'
+            , '')
+            datetime = request.POST.get('date_time_of_incident', '')
+            form_description = request.POST.get('description', '')
+
+            template = get_template('main/report_template.txt')
+
+            context = {
+                'contact_name': contact_name,
+                'contact_email': contact_email,
+                'datetime': datetime,
+                'form_description': form_description,
+            }
+            content = template.render(context)
+
+            email = EmailMessage(
+                "New contact form submission",
+                content,
+                "Your website" +'',
+                ['youremail@gmail.com'],
+                headers = {'Reply-To': contact_email }
+            )
+            email.send()
+
+    return render(request, 'main/report.html', {
+        'form': form_class,
+    })
+
+
