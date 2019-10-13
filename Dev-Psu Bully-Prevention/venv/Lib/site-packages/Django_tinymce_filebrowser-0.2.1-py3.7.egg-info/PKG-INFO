@@ -1,0 +1,26 @@
+Metadata-Version: 1.1
+Name: Django-tinymce-filebrowser
+Version: 0.2.1
+Summary: Django-based file uploader and viewer for TinyMCE
+Home-page: https://github.com/aisayko/Django-tinymce-filebrowser
+Author: Alex Isayko
+Author-email: alex.isayko@gmail.com
+License: MIT License
+Description: 
+        Django-tinymce-filebrowser
+        -----------------
+        
+        Simple django-based file uploader and viewer for TinyMCE
+        
+        
+Keywords: django tinymce fileupload
+Platform: any
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
