@@ -4,42 +4,60 @@ from .models import Content
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
-from .forms import ReportForm
 from django.template.loader import get_template
 from django.core.mail import EmailMessage
+from .forms import StudentRegisterForm, TeacherRegisterForm, ReportForm
+from .models import User
+from django.contrib.auth.decorators import login_required
+from .decorators import student_required, teacher_required
+from django.views.generic import CreateView
 
-
-
+# Can view, does not require login
 def homepage(request):
     return render(request = request,
                   template_name='main/home.html',
                   context = {"content":Content.objects.all})
 
+##This displays page where user gets to choose student or teacher
 def register(request):
-	if request.method == "POST":
-		form = UserCreationForm(request.POST)
-		if form.is_valid():
-			user = form.save()
-			username = form.cleaned_data.get('username')
-			messages.success(request, f"New account created: {username}")
-			login(request, user)
-			messages.info(request, f"You are now logged in as {username}")
-			return redirect("main:homepage")
+    return render(request = request,
+                    template_name = "main/register.html")
 
-		else:
-			for msg in form.error_messages:
-				messages.error(request, f"{msg}: {form.error_messages[msg]}")
+class StudentRegisterView(CreateView):
+    model = User
+    form_class = StudentRegisterForm
+    template_name = 'main/register _form.html'
 
-	form = UserCreationForm
-	return render(request = request,
-                  template_name = "main/register.html",
-                  context={"form":form})
+    #This method is used to populate a dictionary to use as the template context.
+    def get_context_data(self, **kwargs):
+        kwargs['user_type'] = 'student'
+        return super().get_context_data(**kwargs)
 
+    def form_valid(self, form):
+        user = form.save()
+        username = form.cleaned_data.get('username')
+        messages.success(request, f"New account created: {username}")
+        login(self.request, user)
+        messages.info(request, f"You are now logged in as {username}")
+        return redirect("main:homepage")
+        
+class TeacherRegisterView(CreateView):
+    model = User
+    form_class = TeacherRegisterForm
+    template_name = 'main/register _form.html'
 
-def logout_request(request):
-    logout(request)
-    messages.info(request, "Logged out successfully!")
-    return redirect("main:homepage")
+    def get_context_data(self, **kwargs):
+        kwargs['user_type'] = 'teacher'
+        return super().get_context_data(**kwargs)
+
+    def form_valid(self, form):
+        user = form.save()
+        username = form.cleaned_data.get('username')
+        messages.success(request, f"New account created: {username}")
+        login(self.request, user)
+        messages.info(request, f"You are now logged in as {username}")
+        return redirect("main:homepage")
+
 
 def login_request(request):
     if request.method == 'POST':
@@ -61,6 +79,12 @@ def login_request(request):
     return render(request = request,
                     template_name = "main/login.html",
                     context={"form":form})
+
+# Can view when both types users are logged in
+def logout_request(request):
+    logout(request)
+    messages.info(request, "Logged out successfully!")
+    return redirect("main:homepage")
 
 def report(request):
 
@@ -101,5 +125,17 @@ def report(request):
     return render(request, 'main/report.html', {
         'form': form_class,
     })
+
+#only students can view 
+#@login_required
+#@student_required  # <-- use decorator functions here to secify that only students can view!
+
+#use this if your using class based views
+#@method_decorator([login_required, student_required], name='dispatch')
+
+
+
+#only teachers can view 
+
 
 
