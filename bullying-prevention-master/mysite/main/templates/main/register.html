@@ -1,0 +1,17 @@
+
+{% extends 'main/header.html' %}
+
+{% block content %}
+    <br>
+
+	<h2>Create Account</h2>
+	<p class="lead">Select below the type of account you want to create</p>
+	<a href="/register/student" style="background-color:#F4EB16; color:blue" class="btn btn-student btn-lg" role="button">I'm a student</a>
+	<a href="/register/teacher" style="background-color:#F4EB16; color:blue" class="btn btn-teacher btn-lg" role="button">I'm a teacher</a>
+
+    </form>
+
+    If you already have an account <a href="/login" target="blank"><strong>login</strong></a> instead.
+
+
+{% endblock %}
