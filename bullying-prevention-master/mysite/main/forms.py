@@ -25,15 +25,7 @@ class StudentRegisterForm(UserCreationForm):
         user = super().save(commit=False)
         user.is_student = True
         user.save()
-
-        # Create student in models
-        # A student profile crreated to add info
-        student = Student.objects.create(user=user)
         return user
-
-    #return render(request = request,
-     #             template_name = "main/register.html",
-      #            context={"form":form})
 
 class TeacherRegisterForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
@@ -43,8 +35,6 @@ class TeacherRegisterForm(UserCreationForm):
     def save(self, commit=True):
         user = super().save(commit=False)
         user.is_teacher = True
-        # A student profile crreated to add info
-        teacher = Teacher.objects.create(user=user)
         if commit:
             user.save()
         return user
