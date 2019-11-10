@@ -21,8 +21,11 @@ app_name = "main"
 urlpatterns = [
     path("", views.homepage, name="homepage"),
     path("register/", views.register, name="register"),
+    path('register/student/', views.StudentRegisterView.as_view(), name='student_register'),
+    path('register/teacher/', views.TeacherRegisterView.as_view(), name='teacher_register'),
     path("logout", views.logout_request, name="logout"),
     path("login/", views.login_request, name="login"),
     path("report/", views.report, name="report"),
 
 ]
+
