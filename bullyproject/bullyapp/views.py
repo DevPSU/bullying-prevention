@@ -10,6 +10,7 @@ from .forms import StudentRegisterForm, TeacherRegisterForm, ReportForm
 from django.contrib.auth.decorators import login_required
 from .decorators import student_required, teacher_required
 from django.views.generic import CreateView
+from django.db import connection
 
 
 # Can view, does not require login
@@ -31,6 +32,7 @@ def reports(request):
     # return render_to_response('index.html')
     return render(request=request,
                   template_name="index.html",
+				  context={'report':Report.objects.all}
                   )
 
 class StudentRegisterView(CreateView):
@@ -86,9 +88,11 @@ def login_request(request):
 			messages.error(request, "Invalid username or password.")
 			
 	form = AuthenticationForm()
+	connection.close()
 	return render(request = request,
 					template_name = "main/login.html",
 					context={"form":form})
+	
 
 # Can view when both types users are logged in
 def logout_request(request):
@@ -138,6 +142,7 @@ def report(request):
 			email.send()
 			report = form.save()
 			messages.info(request, f"Your report is sent.")
+			connection.close()
 
 	return render(request, 'main/report.html', {
 		'form': form_class,

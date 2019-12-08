@@ -5,6 +5,7 @@
         <li><a href="/">Home</a></li>
         <li><a href="/report">Make a Report</a></li>
 
+        {% block content %}
 
         {% if user.is_authenticated %}
         {% if user.is_teacher %}
@@ -18,6 +19,7 @@
         <li><a href="/login">Login</a></li>
         {% endif %}
 
+        {% endblock %}
         
 
       </ul>

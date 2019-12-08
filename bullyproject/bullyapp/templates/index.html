@@ -29,6 +29,22 @@
     <div class="container">
         <h2 class="center-align">Reports</h2>
     </div>
+
+    {% for rep in report %}
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header"><i class="tooltipped material-icons" data-position="top" data-tooltip="Student">menu_book</i>{{rep.your_name}}</div>
+            <div class="collapsible-body white" >
+                <ul>
+                    <li>Location: {{rep.location}}</li>
+                    <li>Date: {{rep.date_time_of_incident}}</li>
+                    <li>Description: {{rep.description}}</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+    {% endfor %}
+{% comment %} 
     <ul class="collapsible">
         <li>
             <div class="collapsible-header"><i class="tooltipped material-icons" data-position="top" data-tooltip="Student">menu_book</i>J. Jones</div>
@@ -180,7 +196,7 @@
                 </ul>
             </div>
         </li>
-    </ul>
+    </ul> {% endcomment %}
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     
