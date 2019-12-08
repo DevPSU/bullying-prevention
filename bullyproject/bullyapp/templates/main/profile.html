@@ -1,0 +1,20 @@
+
+{% extends 'main/header.html' %}
+
+{% block content %}
+    <title>Profile</title>
+    {% if user.is_authenticated %}
+    <h1>{{user.username}}</h1>
+    {%else%}
+    <h1>Profile</h1>
+    {%endif%}
+    <br>
+    <img src="http://www.cse.mrt.ac.lk/images/people/profile.jpg">
+
+    <br>
+    <br>
+    <h4><a href="/reports">View Weekly Reports</a></h4>
+
+
+
+{% endblock %}

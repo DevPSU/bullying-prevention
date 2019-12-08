@@ -2,11 +2,12 @@
 {% extends 'main/header.html' %}
 
 {% block content %}
+    <title>Login</title>
     <br>
     <form method="POST">
         {% csrf_token %}
         {{form.as_p}}
-      <button style="background-color:#F4EB16; color:blue" class="btn btn-outline-info" type="submit">Login</button>
+      <button style="background-color: mediumaquamarine" class="btn btn-outline-info" type="submit">Login</button>
 
     </form>
 

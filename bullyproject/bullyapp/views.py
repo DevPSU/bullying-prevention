@@ -23,6 +23,16 @@ def register(request):
 	return render(request = request,
 					template_name = "main/register.html")
 
+def profile(request):
+    return render(request = request,
+                  template_name="main/profile.html",)
+
+def reports(request):
+    # return render_to_response('index.html')
+    return render(request=request,
+                  template_name="index.html",
+                  )
+
 class StudentRegisterView(CreateView):
 	model = User
 	form_class = StudentRegisterForm
