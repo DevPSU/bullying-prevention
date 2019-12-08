@@ -1,0 +1,219 @@
+{% extends 'main/header.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'style.css' %}"/>
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <title>Reports</title>
+</head>
+<body>
+    <!--<nav class="nav-wrapper blue darken-2">-->
+        <!--<div class="container">-->
+            <!--<ul>-->
+                <!--<li><a href="#">Home</a></li>-->
+                <!--<li><a href="#">Reports</a></li>-->
+                <!--<li><a href="#">Contact</a></li>-->
+                <!--<li><a href="#">Account</a></li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</nav>-->
+    <div class="container">
+        <h2 class="center-align">Reports</h2>
+    </div>
+
+    {% for rep in report %}
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header"><i class="tooltipped material-icons" data-position="top" data-tooltip="Student">menu_book</i>{{rep.your_name}}</div>
+            <div class="collapsible-body white" >
+                <ul>
+                    <li>Location: {{rep.location}}</li>
+                    <li>Date: {{rep.date_time_of_incident}}</li>
+                    <li>Description: {{rep.description}}</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+    {% endfor %}
+{% comment %} 
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header"><i class="tooltipped material-icons" data-position="top" data-tooltip="Student">menu_book</i>J. Jones</div>
+            <div class="collapsible-body white" >
+                <ul>
+                    <li>Location: North Halls</li>
+                    <li>Time: 3pm</li>
+                    <li>Date: 9/8/19</li>
+                    <li>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header"><i class="tooltipped material-icons" data-position="top" data-tooltip="Student">menu_book</i>Alex Smith</div>
+            <div class="collapsible-body white">
+                <ul>
+                    <li>Location: South Halls</li>
+                    <li>Time: 12pm</li>
+                    <li>Date: 8/21/19</li>
+                    <li>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header"><i class="tooltipped material-icons" data-position="top" data-tooltip="Employee">work</i>Natalie Corden</div>
+            <div class="collapsible-body white">
+                <ul>
+                    <li>Location: Willard</li>
+                    <li>Time: 5pm</li>
+                    <li>Date: 8/15/19</li>
+                    <li>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header"><i class="tooltipped material-icons" data-position="top" data-tooltip="Student">menu_book</i>Josie Holmes</div>
+            <div class="collapsible-body white">
+                <ul>
+                    <li>Location: Electrical Engineering East</li>
+                    <li>Time: 7pm</li>
+                    <li>Date: 8/13/19</li>
+                    <li>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header"><i class="tooltipped material-icons" data-position="top" data-tooltip="Employee">work</i>Bruce Connor</div>
+            <div class="collapsible-body white">
+                <ul>
+                    <li>Location: Hub</li>
+                    <li>Time: 12pm</li>
+                    <li>Date: 8/9/19</li>
+                    <li>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header"><i class="tooltipped material-icons" data-position="top" data-tooltip="Employee">work</i>Lily Wright</div>
+            <div class="collapsible-body white">
+                <ul>
+                    <li>Location: Davey Lab</li>
+                    <li>Time: 10am</li>
+                    <li>Date: 8/4/19</li>
+                    <li>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header"><i class="tooltipped material-icons" data-position="top" data-tooltip="Student">menu_book</i>Cameron Sanders</div>
+            <div class="collapsible-body white">
+                <ul>
+                    <li>Location: West Halls</li>
+                    <li>Time: 12pm</li>
+                    <li>Date: 7/29/19</li>
+                    <li>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header"><i class="tooltipped material-icons" data-position="top" data-tooltip="Student">menu_book</i>Neha Sharma</div>
+            <div class="collapsible-body white">
+                <ul>
+                    <li>Location: North Halls</li>
+                    <li>Time: 12pm</li>
+                    <li>Date: 7/25/19</li>
+                    <li>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header"><i class="tooltipped material-icons" data-position="top" data-tooltip="Student">menu_book</i>Zaheer Jami</div>
+            <div class="collapsible-body white">
+                <ul>
+                    <li>Location: East Halls</li>
+                    <li>Time: 12pm</li>
+                    <li>Date: 7/21/19</li>
+                    <li>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                </ul>
+            </div>
+        </li>
+    </ul> {% endcomment %}
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function(){
+         $('.collapsible').collapsible();
+        }); 
+
+        $(document).ready(function(){
+         $('.tooltipped').tooltip();
+        });
+    </script>
+
+
+</body>
+</html>
+
+{% endblock %}
