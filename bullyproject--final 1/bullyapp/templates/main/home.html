@@ -1,0 +1,54 @@
+{% extends "main/header.html" %}
+
+ {% block content %}
+   <div class="row">
+          <div class="card darken-1" style="background-color: #A5A5AF">
+            <div class="card-content white-text">
+              <span class="card-title">{{con.content_title}}</span>
+              <br>
+              <div class="card-action">
+                <h4 style="padding-bottom: 50px; margin:-10px">Number of Users Today : {{user_count}}</h4>
+                <a href="/report" style="background-color: mediumaquamarine" class="btn-large">Make a Report</a>
+              </div>
+              <hr style="display: block;
+                        height: 1px;
+                        border: 0;
+                        border-top: 1px solid #015249;
+                        margin: 1em 0;
+                        padding: 0;"/>
+              <h3 style="padding-bottom: 10px">News</h3>
+              <div style="margin-left: 20px">
+
+                <h5 style="font-weight: 600">Event 1</h5>
+                <p>This would probably be the place to add in a description of the event so that a user will know what you are talking about.</p>
+                <h5 style="font-weight: 600">Event 2</h5>
+                <p>This would probably be the place to add in a description of the event so that a user will know what you are talking about.</p>
+                <h5 style="font-weight: 600">Event 3</h5>
+                <p>This would probably be the place to add in a description of the event so that a user will know what you are talking about.</p>
+              </div>
+              <hr style="display: block;
+                        height: 1px;
+                        border: 0;
+                        border-top: 1px solid #015249;
+                        margin: 1em 0;
+                        padding: 0;"/>
+              <h3 style="padding-bottom: 10px">Additional Resources</h3>
+              <div style="margin-left: 20px">
+
+                <h5 style="font-weight: 600">Counselor 1</h5>
+                <p>Phone Number: (123) 456-7890 &nbsp&nbsp Email: counselor1@school.org &nbsp&nbsp Hours: 5:00 - 5:10</p>
+                <h5 style="font-weight: 600">Open Counseling Hours</h5>
+                <p>Monday - Friday: 11:00AM - 1:00PM</p>
+                <h5 style="font-weight: 600">Motivational Section</h5>
+                <p>This would definitely be the place to put something motivational.</p>
+              </div>
+              <hr style="display: block;
+                        height: 1px;
+                        border: 0;
+                        border-top: 1px solid #015249;
+                        margin: 1em 0;
+                        padding: 0;"/>
+            </div>
+          </div>
+   </div>
+{% endblock %}

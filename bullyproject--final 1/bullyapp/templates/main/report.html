@@ -1,0 +1,13 @@
+
+{% extends 'main/header.html' %}
+
+{% block title %}Report - {{ block.super }}{% endblock %}
+
+{% block content %}
+<h1>Report</h1>
+<form role="form" action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn" style="background-color: mediumaquamarine">Submit</button>
+</form>
+{% endblock %}
